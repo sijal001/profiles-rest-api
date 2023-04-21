@@ -1,0 +1,54 @@
+# crete a type of vagrant server
+vagrant init ubuntu/bionic64
+
+# change the template of the server > copy and chage the setting of vagrantfile
+https://gist.github.com/LondonAppDev/199eef145a21587ea866b69d40d28682
+
+
+# run the vrgrant setup and download server 
+vagrant up
+
+# setup an ssh connection to vagrant server
+vagrant ssh
+
+# move to the host share directory and setup python
+(update the avaliable python version or update & upgrade ubuntu)
+cd /vagrant
+python -m venv ~/env
+source ~/env/bin/activate
+
+
+# create a requirement.txt file with package and version
+django==(lastest version pypi.org)
+djangorestframework==(lastest version pypi.org)
+
+# create a Django project with choosen name in root location
+django-admin.py startproject profiles_project .
+
+# create a app api in project with choosen name
+python manage.py startapp profiles_api
+
+# enable an app that created inside project
+profiles_project 
+> setting.py 
+> 'INSTALLED_APPS' 
+> add below line
+'rest_framework', 
+'rest_framework.authtoken', 
+'profiles_api',  # name of the api that we created
+
+
+#test the django dev server
+python manage.py runserver 0.0.0.0:8000
+
+
+
+
+
+
+
+
+
+
+
+
